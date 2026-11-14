@@ -10,13 +10,18 @@ public class Gun : MonoBehaviour
     public GameObject bullet; //the bullet prefab that will spawn
     public Transform bulletSpawnPoint;
 
+    public GameObject weaponFlash; //the flash that will spawn when shooting
+
+    public float recoilDistance = 0.1f; //Distance the gun moves back when shooting
+    public float recoilSpeed = 10f; //How fast recoil happens 
+
     private int currentAmmo;
     private bool isReloading = false;
     private float nextTimeToFire = 0f;
 
     private Quaternion initialRotation;
     private Vector3 initialPosition;
-    private Vector3 reloadRoatationOffset = new Vector3(66, 50, 50); //Rotationg the gun when reloading
+    private Vector3 reloadRoatationOffset = new Vector3(66, 0, 0); //Rotationg the gun when reloading
 
     void Start()
     {
@@ -40,6 +45,11 @@ public class Gun : MonoBehaviour
         currentAmmo--;
 
         Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation); //Creation of a bullet object at the spawn point with the same rotation as the gun
+        Instantiate(weaponFlash, bulletSpawnPoint.position, bulletSpawnPoint.rotation); //Creation of a weapon flash object at the spawn point with the same rotation as the gun
+
+        StopCoroutine(nameof(Recoil));
+        StartCoroutine(nameof(Recoil));
+
     }
 
     IEnumerator Reload()
@@ -76,6 +86,30 @@ public class Gun : MonoBehaviour
         if (currentAmmo == magSize) return;
 
         StartCoroutine(Reload());
+    }
+
+    private IEnumerator Recoil()
+    {
+        Vector3 recoilTarget = initialPosition + new Vector3(recoilDistance, 0, 0);
+        float t = 0f;
+
+        while (t < 1f) 
+        {
+            t += Time.deltaTime * recoilSpeed;
+            transform.localPosition = Vector3.Lerp(initialPosition, recoilTarget, t);
+            yield return null; 
+        }
+
+        t= 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime * recoilSpeed;
+            transform.localPosition = Vector3.Lerp(recoilTarget, initialPosition, t);
+            yield return null;
+        }
+
+        transform.localPosition = initialPosition; //Ensures the gun is back to its original position after recoil
     }
 
 }
