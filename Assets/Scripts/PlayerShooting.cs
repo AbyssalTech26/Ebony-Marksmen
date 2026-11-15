@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     public Gun gun; //Reference to the gun script
+    public Transform gunHolder;
     private bool isHoldingShoot = false; //Flag when player is holding shoot button
 
     //Void methods refer to input actions in the PlayerInput action editor. Done in order.
