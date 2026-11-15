@@ -69,10 +69,7 @@ public class PickUp : MonoBehaviour
     {
         if (!isLookedAt) return;
 
-        if (player.gun != null)
-        {
-            Destroy(player.gun.gameObject); //Destroys old gun when picking up a new one 
-        }
+        player.OnDrop(); //Check if player has gun, If u have one, drop it before pickign up new one 
 
         GameObject newWeapon = Instantiate(weaponPrefab, player.gunHolder);
         newWeapon.transform.localPosition = Vector3.zero;

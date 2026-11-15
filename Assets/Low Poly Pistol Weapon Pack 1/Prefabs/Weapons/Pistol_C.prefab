@@ -538,6 +538,7 @@ MonoBehaviour:
   bullet: {fileID: 9012874731585123008, guid: 1c9d6be45c3e26243aaec89e7acfbec9, type: 3}
   bulletSpawnPoint: {fileID: 312859093864905171}
   weaponFlash: {fileID: 5274325756680520658, guid: 7f2770a42520d084e9d392eff661b884, type: 3}
+  droppedWeapon: {fileID: 7779035596426449466, guid: 38e0821b19c8f0e45bdfcfc4b00c5d9f, type: 3}
   recoilDistance: 0.1
   recoilSpeed: 10
 --- !u!1 &9108289636165635170

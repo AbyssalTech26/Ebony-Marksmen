@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     public Transform bulletSpawnPoint;
 
     public GameObject weaponFlash; //the flash that will spawn when shooting
+    public GameObject droppedWeapon;
 
     public float recoilDistance = 0.1f; //Distance the gun moves back when shooting
     public float recoilSpeed = 10f; //How fast recoil happens 
@@ -110,6 +111,12 @@ public class Gun : MonoBehaviour
         }
 
         transform.localPosition = initialPosition; //Ensures the gun is back to its original position after recoil
+    }
+
+    public void Drop()
+    {
+        Instantiate(droppedWeapon, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
 }
