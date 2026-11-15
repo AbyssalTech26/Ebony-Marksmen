@@ -629,7 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   reloadTime: 1
   fireRate: 0.15
-  magSize: 20
+  magSize: 40
   bullet: {fileID: 9012874731585123008, guid: 1c9d6be45c3e26243aaec89e7acfbec9, type: 3}
   bulletSpawnPoint: {fileID: 853071523609525997}
   weaponFlash: {fileID: 5274325756680520658, guid: 7f2770a42520d084e9d392eff661b884, type: 3}
