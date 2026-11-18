@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public int currentPointIndex = 0; //Create points enemy can patrol between 
     public Vector3 currentTarget; //Poistion of current target. What enemy will be walkign toward 
     public float positionThreshhold; //How close enemy has to be before it thinks it reaches the target
-    public float idleTime = 5f; //how long enemy stays idle
+    public float idleTime = 3f; //how long enemy stays idle
     public float attackDistance = 5f;
     public float maxVisionDistance = 20f;
     public float minChasingHealth = 30f; //If enemy has under 30 health, it will run away from player
@@ -168,7 +168,7 @@ public class Enemy : MonoBehaviour
         }
         else if (Vector3.Distance(transform.position, playerTransform.position) > maxVisionDistance)
         {
-            state = State.Patrolling; //if closer than max distnace (away from player)
+            state = State.Patrolling; 
         }
         else if (Vector3.Distance(transform.position, playerTransform.position) < positionThreshhold && !canSeePlayer)
         {
