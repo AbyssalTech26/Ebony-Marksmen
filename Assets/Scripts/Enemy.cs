@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
         playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
         GameObject patrolPointParent = GameObject.FindWithTag("PatrolPoint"); //Patrol points will be under a parent object, containing a list of patrol points 
-        patrolPoints = patrolPointParent.GetComponentsInChildren<Transform>().Where(t => t != patrolPointParent.transform).ToArray(); // Receiving transform from children objects 
+        patrolPoints = patrolPointParent.GetComponentsInChildren<Transform>().Where(t => t != patrolPointParent.transform).ToArray(); //Receiving transform from children objects 
     }
 
 
