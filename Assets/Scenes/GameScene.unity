@@ -1925,6 +1925,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   health: 100
+  bulletPrefab: {fileID: 9012874731585123008, guid: 1c9d6be45c3e26243aaec89e7acfbec9, type: 3}
+  bulletSpawnPoint: {fileID: 3796812346570807908}
+  weaponFlash: {fileID: 5274325756680520658, guid: 7f2770a42520d084e9d392eff661b884, type: 3}
+  bloom: 0.75
+  fireRate: 0.2
   hitMat: {fileID: 2100000, guid: 05fd866f9fcaff442a40f228c8f86ab6, type: 2}
   currentPointIndex: 0
   currentTarget: {x: 0, y: 0, z: 0}
