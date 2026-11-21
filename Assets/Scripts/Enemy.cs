@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -6,7 +7,16 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public int health = 100;
+
+    public GameObject bulletPrefab;
+    public Transform bulletSpawnPoint;
+    public GameObject weaponFlash;
+    public float bloom;
+    public float fireRate;
+    private float lastShotTime = 0f;
+     
     public Material hitMat;
+
     private Rigidbody rb;
     private Renderer rend;
     private Material originalMaterial;
@@ -181,7 +191,7 @@ public class Enemy : MonoBehaviour
         idleTimeCounter = idleTime; //set back to 5 
         agent.ResetPath(); //want to stand still when shooting 
 
-        //Shoot()
+        Shoot();
 
         if (Vector3.Distance(transform.position, playerTransform.position) > attackDistance || !canSeePlayer)
         {
@@ -206,6 +216,28 @@ public class Enemy : MonoBehaviour
         if (canSeePlayer)
         {
             lastKnownPlayerPosition = playerTransform.position;
+        }
+    }
+
+    private void Shoot()
+    {
+        if (Time.time > lastShotTime + fireRate)
+        {
+            Vector3 directionToPlyaer = playerTransform.position - transform.position;
+            directionToPlyaer.Normalize();
+
+            Quaternion bulletRotation = Quaternion.LookRotation(directionToPlyaer);
+
+            float maxInaccuracy = 10f; //10 degrees off
+            float currentInaccuracy = bloom + maxInaccuracy;
+            float randomJaw = Random.Range(-currentInaccuracy, currentInaccuracy);
+            float randomPitch = Random.Range(-currentInaccuracy, currentInaccuracy);
+
+            bulletRotation *= Quaternion.Euler(randomPitch, randomJaw + 90, 0f);
+
+            Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletRotation);
+            Instantiate(weaponFlash, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            lastShotTime = Time.time;
         }
     }
 }
