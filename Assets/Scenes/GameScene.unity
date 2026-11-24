@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 916173930}
   - component: {fileID: 916173932}
   - component: {fileID: 916173933}
+  - component: {fileID: 916173934}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1088,6 +1089,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
   gun: {fileID: 2113276140}
   gunHolder: {fileID: 0}
+--- !u!114 &916173934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916173924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d4c06fcdf3dec4ebff0a00c7356702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  health: 100
 --- !u!1 &964975481
 GameObject:
   m_ObjectHideFlags: 0
